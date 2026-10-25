@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Empieza a tiempo</title>
+  <meta name="description" content="Guía práctica para dejar de trabajar solo bajo urgencia: regla de los 2 minutos, micro-pasos, bloques de trabajo y recompensas tempranas.">
+  <meta name="theme-color" content="#070910">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23070910'/%3E%3Cpath d='M4 20a12 12 0 0 1 24 0z' fill='%23ffb35c'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <div class="bg" aria-hidden="true">
+    <span class="glow glow-dusk"></span>
+    <span class="glow glow-sea"></span>
+    <span class="glow glow-dawn"></span>
+  </div>
+
+  <header class="nav-wrap">
+    <nav class="nav glass" id="nav" aria-label="Principal">
+      <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"></span>Empieza a tiempo</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#metodo" data-spy>Método</a></li>
+        <li><a href="#herramientas" data-spy>Herramientas</a></li>
+        <li><a href="#plan" data-spy>Plan semanal</a></li>
+      </ul>
+      <button class="btn btn-primary btn-sm nav-cta" type="button" data-action="start2">Empezar 2 min</button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú"><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+    <!-- Inicio -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 data-enter style="--i:0">Cambia cómo empiezas, no cuánto te motivas</h1>
+          <p class="lead" data-enter style="--i:1">Salir de esa rutina es posible, pero no se logra solo con “motivarme más”. Hay que cambiar <strong>cómo</strong> empiezas y <strong>cómo</strong> estructuras el trabajo, porque tu cerebro ya está entrenado para responder a la urgencia.</p>
+          <div class="hero-actions" data-enter style="--i:2">
+            <button class="btn btn-primary" type="button" data-action="start2">Empezar con 2 minutos</button>
+            <a class="btn btn-ghost" href="#metodo">Ver el método</a>
+          </div>
+          <p class="hero-note" data-enter style="--i:3">Cuanto más pequeño es el primer paso, menos ansiedad genera y menos esperas el momento perfecto.</p>
+        </div>
+
+        <aside class="timer glass" data-enter style="--i:2" aria-labelledby="timerTitle">
+          <div class="timer-head">
+            <h2 class="timer-title" id="timerTitle">Temporizador</h2>
+            <button class="chip-btn" id="soundBtn" type="button" aria-pressed="true">Sonido activado</button>
+          </div>
+
+          <div class="seg" role="group" aria-label="Duración del bloque">
+            <button class="seg-btn is-active" type="button" data-minutes="2" aria-pressed="true">2 min</button>
+            <button class="seg-btn" type="button" data-minutes="25" aria-pressed="false">25 min</button>
+            <button class="seg-btn" type="button" data-minutes="40" aria-pressed="false">40 min</button>
+          </div>
+
+          <div class="ring">
+            <svg viewBox="0 0 220 220" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffd9a3"/>
+                  <stop offset="1" stop-color="#ff9340"/>
+                </linearGradient>
+              </defs>
+              <circle class="ring-track" cx="110" cy="110" r="96"/>
+              <circle class="ring-bar" id="ringBar" cx="110" cy="110" r="96" stroke="url(#ringGrad)"/>
+            </svg>
+            <div class="ring-center">
+              <div class="time" id="time" role="timer" aria-live="off">
+                <span class="sr-only" id="timeSr">02:00</span>
+                <span class="d" aria-hidden="true">0</span><span class="d" aria-hidden="true">2</span><span class="colon" aria-hidden="true">:</span><span class="d" aria-hidden="true">0</span><span class="d" aria-hidden="true">0</span>
+              </div>
+              <span class="mode-label" id="modeLabel">Regla de los 2 minutos</span>
+            </div>
+          </div>
+
+          <p class="timer-msg" id="timerMsg" aria-live="polite">Solo abre el archivo. Nada más.</p>
+
+          <div class="timer-actions">
+            <button class="btn btn-primary" id="startBtn" type="button">Empezar</button>
+            <button class="btn btn-ghost" id="resetBtn" type="button">Reiniciar</button>
+          </div>
+          <p class="timer-foot"><span id="todayCount">0</span> arranques completados hoy</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Método -->
+    <section class="section" id="metodo">
+      <div class="container">
+        <header class="section-head">
+          <h2>Seis cambios para empezar a tiempo</h2>
+          <p class="sub">La motivación llega después de arrancar. Estos cambios hacen que arrancar cueste menos.</p>
+        </header>
+
+        <div class="bento">
+          <article class="card glass c1">
+            <span class="card-num" aria-hidden="true">1</span>
+            <h3>Deja de esperar a “tener ganas”</h3>
+            <p>La motivación casi nunca llega antes de empezar. Llega <strong>después</strong> de haber arrancado. Por eso la regla más efectiva es la de los <strong>2 minutos</strong>:</p>
+            <ul class="ticks">
+              <li>Comprométete solo a trabajar 2 minutos en la tarea.</li>
+              <li>El único objetivo es <em>abrir el archivo</em>, <em>escribir la primera línea</em> o <em>abrir el PDF</em>.</li>
+              <li>La mayoría de las veces, una vez que ya empezaste, continúas.</li>
+            </ul>
+            <p class="note">El truco no es engañarte con “voy a trabajar 2 horas”. Es reducir la resistencia al arranque casi a cero.</p>
+            <div class="card-action"><button class="btn btn-ghost btn-sm" type="button" data-action="start2">Probar 2 minutos ahora</button></div>
+          </article>
+
+          <article class="card glass c2">
+            <span class="card-num" aria-hidden="true">2</span>
+            <h3>Descompón las tareas hasta que sean ridículamente pequeñas</h3>
+            <p>En vez de “hacer el trabajo de cálculo” o “programar la función”, escribe pasos como:</p>
+            <ol class="mini-steps">
+              <li>Abrir el documento</li>
+              <li>Escribir el título</li>
+              <li>Resolver el primer ejercicio</li>
+              <li>Escribir la firma de la función</li>
+            </ol>
+            <p class="note">Cuanto más pequeño sea el siguiente paso, menos ansiedad genera y menos necesidad tienes de “esperar el momento perfecto”.</p>
+          </article>
+
+          <article class="card glass c3">
+            <span class="card-num" aria-hidden="true">3</span>
+            <h3>Crea urgencia artificial, sin llegar al límite real</h3>
+            <p>Si tu cerebro necesita presión para activarse, dale presión <strong>controlada</strong>:</p>
+            <ul class="ticks">
+              <li>Ponte plazos intermedios más cortos (ej.: “esta parte tiene que estar lista el martes a las 18:00”).</li>
+              <li>Usa un temporizador visible (Pomodoro de 25 o 40 minutos).</li>
+              <li>Trabaja como si tuvieras que entregarlo mañana, aunque el plazo real sea en una semana.</li>
+            </ul>
+            <p class="note">Así aprovechas el mecanismo de la adrenalina, pero sin el costo de dejarlo todo para el final.</p>
+          </article>
+
+          <article class="card glass c4">
+            <span class="card-num" aria-hidden="true">4</span>
+            <h3>Protege el momento de empezar, no solo el de entregar</h3>
+            <p>La mayoría de la gente solo se preocupa por la fecha de entrega. Cambia el foco: decide de antemano <strong>cuándo vas a empezar</strong>.</p>
+            <ul class="ticks">
+              <li>Agenda bloques de trabajo en el calendario como si fueran citas.</li>
+              <li>Trata esos bloques con la misma seriedad que una clase o una reunión.</li>
+              <li>Si no puedes en el horario previsto, reprograma el bloque el mismo día. No lo dejes “para cuando pueda”.</li>
+            </ul>
+          </article>
+
+          <article class="card glass c5">
+            <span class="card-num" aria-hidden="true">5</span>
+            <h3>Cambia la recompensa</h3>
+            <div class="compare">
+              <div class="compare-col"><b>Ahora</b><p>La recompensa llega al terminar bajo presión: alivio y adrenalina.</p></div>
+              <div class="compare-col is-new"><b>Después</b><p>Una recompensa más temprana, tras 25–40 minutos de trabajo real.</p></div>
+            </div>
+            <ul class="ticks">
+              <li>Date algo pequeño pero agradable: un café, 10 minutos de algo que te guste, un check en una lista.</li>
+              <li>Lleva un registro simple de “días en los que empecé a tiempo”. Ver el progreso genera motivación de otro tipo.</li>
+            </ul>
+            <p class="card-link"><a class="inline-link" href="#registro">Abrir el registro de arranque</a></p>
+          </article>
+
+          <article class="card glass c6">
+            <span class="card-num" aria-hidden="true">6</span>
+            <h3>Reduce la fricción de empezar y aumenta la de distraerte</h3>
+            <div class="groups">
+              <div class="group">
+                <h4>Para empezar más fácil</h4>
+                <ul class="ticks">
+                  <li>Deja el entorno listo la noche anterior: archivo abierto, materiales preparados, pestaña del proyecto lista.</li>
+                </ul>
+              </div>
+              <div class="group">
+                <h4>Para distraerte menos</h4>
+                <ul class="ticks">
+                  <li>Quita o bloquea las distracciones más fuertes durante los bloques de trabajo.</li>
+                  <li>Si trabajas en la computadora, usa herramientas que limiten el acceso a redes sociales o YouTube durante ese tiempo.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Herramientas -->
+    <section class="section" id="herramientas">
+      <div class="container">
+        <header class="section-head">
+          <h2>Pruébalo ahora</h2>
+          <p class="sub">Divide una tarea y anota cómo te va. Todo queda guardado solo en este navegador.</p>
+        </header>
+
+        <div class="tools">
+          <article class="panel glass" id="micropasos" aria-labelledby="mpTitle">
+            <div class="panel-head">
+              <div>
+                <h3 id="mpTitle">Micro-pasos</h3>
+                <p class="muted">Divide tu tarea hasta que el siguiente paso sea ridículamente pequeño.</p>
+              </div>
+              <span class="badge" id="mpHint">Ideal: 4–6 pasos</span>
+            </div>
+
+            <label class="field">
+              <span>Tarea que sueles dejar para el final</span>
+              <input type="text" id="taskName" maxlength="80" placeholder="Ej.: Trabajo de cálculo" autocomplete="off">
+            </label>
+
+            <form class="add-row" id="stepForm">
+              <label class="sr-only" for="stepInput">Nuevo micro-paso</label>
+              <input type="text" id="stepInput" maxlength="90" placeholder="Ej.: Abrir el documento" autocomplete="off">
+              <button class="btn btn-primary btn-sm" type="submit">Añadir paso</button>
+            </form>
+
+            <ul class="steps" id="stepList"></ul>
+
+            <div class="empty" id="stepEmpty">
+              <p>Aún no hay pasos. Escribe el primero o carga un ejemplo:</p>
+              <div class="chips">
+                <button class="chip" type="button" data-preset="estudios">Estudios</button>
+                <button class="chip" type="button" data-preset="programacion">Programación</button>
+                <button class="chip" type="button" data-preset="trabajos">Trabajos universitarios</button>
+              </div>
+            </div>
+
+            <div class="progress-row" id="stepProgress" hidden>
+              <div class="bar"><span id="stepBar"></span></div>
+              <span id="stepCount">0/0</span>
+            </div>
+
+            <div class="panel-foot">
+              <button class="link-btn" id="clearSteps" type="button" hidden>Limpiar lista</button>
+            </div>
+          </article>
+
+          <article class="panel glass" id="registro" aria-labelledby="rgTitle">
+            <div class="panel-head">
+              <div>
+                <h3 id="rgTitle">Registro de arranque</h3>
+                <p class="muted">Durante 5 días, marca si empezaste a tiempo y anota qué tan difícil fue (1–10).</p>
+              </div>
+            </div>
+
+            <p class="summary" id="trackSummary" aria-live="polite"></p>
+            <ol class="days" id="dayList"></ol>
+            <p class="trend" id="trendMsg" aria-live="polite"></p>
+
+            <div class="panel-foot">
+              <button class="link-btn" id="resetTracker" type="button">Reiniciar registro</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plan -->
+    <section class="section" id="plan">
+      <div class="container narrow">
+        <header class="section-head">
+          <h2>Cómo empezar esta misma semana</h2>
+          <p class="sub">Un plan simple de cinco pasos. Repítelo de 4 a 5 días seguidos con la misma lógica.</p>
+        </header>
+
+        <div class="plan glass">
+          <div class="plan-progress">
+            <div class="bar"><span id="planBar"></span></div>
+            <span id="planCount">0 de 5</span>
+          </div>
+          <ol class="plan-list" id="planList">
+            <li class="plan-step">
+              <label class="check">
+                <input type="checkbox" data-plan="0">
+                <span class="box" aria-hidden="true"></span>
+                <span class="plan-text"><b>Elige una tarea importante</b> que normalmente dejas para el final.</span>
+              </label>
+            </li>
+            <li class="plan-step">
+              <label class="check">
+                <input type="checkbox" data-plan="1">
+                <span class="box" aria-hidden="true"></span>
+                <span class="plan-text">Divídela en <b>4–6 micro-pasos</b>.</span>
+              </label>
+              <a class="inline-link" href="#micropasos">Hacerlo aquí</a>
+            </li>
+            <li class="plan-step">
+              <label class="check">
+                <input type="checkbox" data-plan="2">
+                <span class="box" aria-hidden="true"></span>
+                <span class="plan-text">Agenda mañana un <b>bloque de 40–50 minutos</b> solo para el primer micro-paso.</span>
+              </label>
+            </li>
+            <li class="plan-step">
+              <label class="check">
+                <input type="checkbox" data-plan="3">
+                <span class="box" aria-hidden="true"></span>
+                <span class="plan-text">Usa la <b>regla de los 2 minutos</b> para arrancar.</span>
+              </label>
+              <button class="inline-link" type="button" data-action="start2">Empezar ahora</button>
+            </li>
+            <li class="plan-step">
+              <label class="check">
+                <input type="checkbox" data-plan="4">
+                <span class="box" aria-hidden="true"></span>
+                <span class="plan-text">Al terminar el bloque, anota <b>qué tan difícil fue empezar</b> (del 1 al 10).</span>
+              </label>
+              <a class="inline-link" href="#registro">Anotarlo</a>
+            </li>
+          </ol>
+        </div>
+
+        <p class="closing">No intentes cambiar todo de golpe. El objetivo es que tu cerebro empiece a asociar “empezar con tiempo” con algo manejable, no con sufrimiento.</p>
+      </div>
+    </section>
+
+    <!-- Cierre -->
+    <section class="section" id="adaptar">
+      <div class="container">
+        <div class="cta glass">
+          <h2>¿Qué tipo de tarea te cuesta más?</h2>
+          <p>Elige tu área y carga una primera lista de micro-pasos para adaptarla a lo tuyo.</p>
+          <div class="chips chips-center">
+            <button class="chip chip-lg" type="button" data-preset="estudios">Estudios</button>
+            <button class="chip chip-lg" type="button" data-preset="programacion">Programación</button>
+            <button class="chip chip-lg" type="button" data-preset="trabajos">Trabajos universitarios</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>Empieza a tiempo</span>
+      <span>Tus datos se guardan solo en este navegador.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
